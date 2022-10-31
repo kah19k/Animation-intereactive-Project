@@ -1,37 +1,19 @@
-// this is my code for now.
-/* @type {HTMLCanvasElement} */
-const canvas = document.getElementById('canvas1');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+let w = 600;
+let h = 600;
+let randomX, randomY, randomSize;
 
-class Root {
-  constructor(x, y){
-    this.x = x;
-    this.y = y;
-    this.speedX = Math.random() * 4 - 2;
-    this.speedY = Math.random() * 4 - 2;
-    this.maxSize = Math.random() * 7 + 5;
-    this.size = Math.random() * 1 + 2;
-  }
-
-  update(){
-    this.x += this.speedX;
-    this.y += this.speedY;
-    this.size += 0.1;
-    if (this.size < this.maxSize){
-      ctx.beginPath();
-      ctx.arch(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fillStyle = 'hsl(140,100%,50%)';
-      ctx.fill();
-      ctx.stroke();
-
-    }
-  }
-}
-window.addEventListener('mousemove', function(e){
-  const root = new Root(e.x, e.y);
-  root.update();
+function setup() {
+  createCanvas(w,h);
+  background ("lightblue");
+  fill(255,30);
+  stroke(125,20);
+  strokeWeight(10);
 }
 
-)
+function draw() {
+  circle(mouseX, mouseY, 20);
+  if (frameCount % 1 == 0) randomX = random(-55,55);
+  if (frameCount % 1 == 0) randomY = random(-55,55);
+  if (frameCount % 200 == 0) randomSize = random(10,160);
+  circle(mouseX+randomX, mouseY+randomY , randomSize);
+}
