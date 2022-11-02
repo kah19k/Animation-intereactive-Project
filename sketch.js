@@ -5,8 +5,8 @@ let randomX, randomY, randomSize;
 function setup() {
   createCanvas(w,h);
   background ("lightblue");
-  fill(255,30);
-  stroke(125,20);
+  fill(235,40);
+  stroke(200,10);
   strokeWeight(10);
 }
 
@@ -14,6 +14,6 @@ function draw() {
   circle(mouseX, mouseY, 20);
   if (frameCount % 1 == 0) randomX = random(-55,55);
   if (frameCount % 1 == 0) randomY = random(-55,55);
-  if (frameCount % 200 == 0) randomSize = random(10,160);
+  if (frameCount % 100 == 0) randomSize = random(30,60);
   circle(mouseX+randomX, mouseY+randomY , randomSize);
 }
